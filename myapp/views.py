@@ -28,7 +28,7 @@ def home(request):
 
 class PostListView(generic.ListView):
     model = Post
-    paginate_by = 8
+    paginate_by = 3
     template_name = 'home.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'
     ordering = ['-date_posted']
@@ -80,7 +80,7 @@ class UserPostListView(ListView):
     model = Post
     template_name = 'user_post.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'
-    paginate_by = 8
+   # paginate_by = 3
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
