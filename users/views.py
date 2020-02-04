@@ -33,10 +33,11 @@ def profile(request):
             u_form.save()
             #p_form.save()
             messages.success(request, "Your Acoount has been Updated!")
-            return redirect('profile')
+            return redirect('blog-home')
     else:
         u_form = UserUpdate(instance = request.user)
        # p_form = ProfileUpdate(instance=request.user.profile)
+
     
     context = {
         'u_form':u_form,
