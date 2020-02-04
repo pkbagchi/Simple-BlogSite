@@ -80,7 +80,7 @@ class UserPostListView(ListView):
     model = Post
     template_name = 'user_post.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'
-    paginate_by = 5
+    paginate_by = 8
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
@@ -89,3 +89,4 @@ class UserPostListView(ListView):
 
 def about(request):
     return render(request, 'about.html', {'title': 'About'})
+
