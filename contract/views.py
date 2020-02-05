@@ -16,7 +16,12 @@ def Contract(request):
             form.save()
             name = form.cleaned_data.get('name')
             names = name.split()
-            messages.success(request, f'Thanks, For your Feedback {names[0]}!')
+            name1 = name.split()
+
+            if len(name1[0]) <= 3:
+                messages.success(request, f'Thanks, For your Feedback {names[1]}!')
+            else:
+                messages.success(request, f'Thanks, For your Feedback {names[0]}!')
 
             return redirect('blog-home')
           
