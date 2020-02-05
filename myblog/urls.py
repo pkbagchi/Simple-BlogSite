@@ -39,6 +39,7 @@ urlpatterns = [
     path('register/', user_views.register, name = 'register'),
     path('profile/', user_views.profile, name='profile'),
     path('admin/', admin.site.urls),
+    path('error/', user_views.error_page, name='error'),
 
     #cbv
     path('login/', auth_views.LoginView.as_view(template_name = 'login.html'), name = 'login'),
@@ -75,4 +76,5 @@ urlpatterns = [
         
         
 ]
-
+handler404 = user_views.handler404
+# handler500 = user_views.handler404

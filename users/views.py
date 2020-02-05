@@ -20,6 +20,14 @@ def register(request):
 
     return render(request, 'register.html', {'form':form})
 
+
+def handler404(request,Exception):
+    return render(request, '404.html', status=404)
+
+def error_page(request):
+    return render(request,'404.html')
+
+
 @login_required
 def profile(request):
 
