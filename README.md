@@ -7,6 +7,11 @@
 
 <h3>Installation</h3>
 
+Install crispy forms
+```
+pip3 install django-crispy-forms
+```
+
 Create Database
 ```
 python3 manage.py migrate
