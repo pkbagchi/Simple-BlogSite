@@ -24,3 +24,4 @@ Visit
 ```
 127.0.0.1:8000
 ```
+<h3>With full features,Visit # <a href="http://parthasblog.pythonanywhere.com/">Partha'sBlog</a></h3>
