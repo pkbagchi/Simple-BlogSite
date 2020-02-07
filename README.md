@@ -14,6 +14,9 @@ pip3 install django-crispy-forms
 
 Create Database
 ```
+python3 manage.py makemigrations
+```
+```
 python3 manage.py migrate
 ```
 Run Server
