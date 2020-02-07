@@ -25,4 +25,4 @@ Visit
 127.0.0.1:8000
 ```
 
-<h2>With full features,Visit <a href="http://parthasblog.pythonanywhere.com/">parthasblog.pythonanywhere.com</a></h2>
+<h3>With full features, Visit: <a href="http://parthasblog.pythonanywhere.com/">parthasblog.pythonanywhere.com</a></h3>
