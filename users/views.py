@@ -2,19 +2,35 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegForm, UserUpdate
 from django.contrib.auth.decorators import login_required
+import requests
+import json
 
 
 # Create your views here.
 
 def register(request):
-   
+    
     if request.method == 'POST':
-        form = UserRegForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Welcome {username}, Please Login!')
-            return redirect('login')
+        clientkey = request.POST['g-recaptcha-response']
+        secretkey = ''
+        capthchaData = {
+            'secret': secretkey,
+            'response' : clientkey
+        }
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data = capthchaData)
+        response = json.loads(r.text)
+        verify = response['success']
+        if verify:
+            form = UserRegForm(request.POST)
+            if form.is_valid():
+                form.save()
+                username = form.cleaned_data.get('username')
+                messages.success(request, f'Welcome {username}, Please Login!')
+                return redirect('login')
+        else:
+            messages.warning(request, 'Invalid reCaptcha!')
+            return redirect('register')
+          
     else:
         form = UserRegForm()
 
@@ -32,6 +48,7 @@ def register(request):
 def profile(request):
 
     if request.method == "POST":
+        
         u_form = UserUpdate(request.POST, instance = request.user)
         #p_form = ProfileUpdate(request.POST,
          #                          request.FILES,
@@ -42,6 +59,7 @@ def profile(request):
             #p_form.save()
             messages.success(request, "Your Acoount has been Updated!")
             return redirect('blog-home')
+
     else:
         u_form = UserUpdate(instance = request.user)
        # p_form = ProfileUpdate(instance=request.user.profile)

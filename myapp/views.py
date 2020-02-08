@@ -4,6 +4,7 @@ from .models import Post
 from django.core.paginator import Paginator
 from django.views import generic
 
+
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from django.views.generic import (
@@ -49,6 +50,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
